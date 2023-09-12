@@ -28,7 +28,7 @@ jobs:
             -   name: Build
                 run: ./gradlew build
             -   name: Upload JAR
-                uses: actions/upload-artifact@v3.1.0
+                uses: actions/upload-artifact@v3.1.3
                 with:
                     name: "🔨 Successfully build EternalPlots with JDK${{ matrix.jdk }}"
                     path: "build/libs/*.jar"
