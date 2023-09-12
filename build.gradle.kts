@@ -50,7 +50,7 @@ dependencies {
     implementation("org.panda-lang:expressible:1.2.0")
 
     // TriumphGui
-    implementation("dev.triumphteam:triumph-gui:3.1.3")
+    implementation("dev.triumphteam:triumph-gui:3.1.5")
 
     // okaeri configs
     implementation("eu.okaeri:okaeri-configs-yaml-snakeyaml:4.0.6")
