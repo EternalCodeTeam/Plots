@@ -1,8 +1,8 @@
 plugins {
     id("java-library")
-    id("net.minecrell.plugin-yml.bukkit") version "0.5.2"
+    id("net.minecrell.plugin-yml.bukkit") version "0.6.0"
     id("com.github.johnrengelman.shadow") version "7.1.2"
-    id("xyz.jpenilla.run-paper") version "1.0.6"
+    id("xyz.jpenilla.run-paper") version "1.1.0"
 }
 
 repositories {
@@ -28,29 +28,29 @@ java {
 dependencies {
     // spigot + paper lib
     compileOnly("org.spigotmc:spigot-api:1.19.1-R0.1-SNAPSHOT")
-    api("io.papermc:paperlib:1.0.7")
+    api("io.papermc:paperlib:1.0.8")
 
 
     // anvil gui
     implementation("net.wesjd:anvilgui:1.9.0-SNAPSHOT")
 
     // adventure
-    compileOnly("net.kyori:adventure-platform-bukkit:4.1.2")
-    compileOnly("net.kyori:adventure-text-minimessage:4.11.0")
+    compileOnly("net.kyori:adventure-platform-bukkit:4.3.0")
+    compileOnly("net.kyori:adventure-text-minimessage:4.14.0")
 
     // LiteCommands
-    implementation("dev.rollczi.litecommands:bukkit:2.0.6")
-    implementation("dev.rollczi.litecommands:core:2.5.0")
+    implementation("dev.rollczi.litecommands:bukkit:2.8.9")
+    implementation("dev.rollczi.litecommands:core:2.8.9")
 
     // panda-dzikoysk crafted libs
-    implementation("org.panda-lang:expressible:1.2.0")
+    implementation("org.panda-lang:expressible:1.3.6")
     implementation("org.panda-lang:panda-utilities:0.5.3-alpha")
 
     // TriumphGui
-    implementation("dev.triumphteam:triumph-gui:3.1.3")
+    implementation("dev.triumphteam:triumph-gui:3.1.5")
 
     // okaeri configs
-    implementation("eu.okaeri:okaeri-configs-yaml-snakeyaml:4.0.6")
+    implementation("eu.okaeri:okaeri-configs-yaml-snakeyaml:4.0.9")
 
     // ormlite jdbc
     compileOnly("com.j256.ormlite:ormlite-jdbc:6.1")
@@ -59,13 +59,13 @@ dependencies {
     compileOnly("com.zaxxer:HikariCP:5.0.1")
 
     // bStats
-    implementation("org.bstats:bstats-bukkit:3.0.0")
+    implementation("org.bstats:bstats-bukkit:3.0.2")
 
     // vault
     compileOnly("com.github.MilkBowl:VaultAPI:1.7.1")
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.0")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.0")
 }
 
 bukkit {
@@ -79,13 +79,13 @@ bukkit {
     version = "${project.version}"
 
     libraries = listOf(
-        "org.postgresql:postgresql:42.5.0",
-        "com.h2database:h2:2.1.214",
+        "org.postgresql:postgresql:42.6.0",
+        "com.h2database:h2:2.2.222",
         "com.j256.ormlite:ormlite-jdbc:6.1",
         "com.zaxxer:HikariCP:5.0.1",
-        "net.kyori:adventure-platform-bukkit:4.1.2",
-        "net.kyori:adventure-text-minimessage:4.11.0",
-        "org.mariadb.jdbc:mariadb-java-client:3.0.7"
+        "net.kyori:adventure-platform-bukkit:4.3.0",
+        "net.kyori:adventure-text-minimessage:4.14.0",
+        "org.mariadb.jdbc:mariadb-java-client:3.2.0"
     )
 
     depend = listOf(
