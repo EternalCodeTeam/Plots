@@ -39,7 +39,7 @@ public class VaultProvider {
 
     public Economy getEconomy() throws Exception {
         if (!this.hasEconomy()) {
-            throw new Exception("Vault not found!");
+            throw new Exception("Vault is required for EternalPlots to works properly!");
         }
 
         return this.economy;
