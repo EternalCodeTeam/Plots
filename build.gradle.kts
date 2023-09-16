@@ -8,6 +8,7 @@ plugins {
 repositories {
     gradlePluginPortal()
     mavenCentral()
+
     maven { url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/") }
     maven { url = uri("https://storehouse.okaeri.eu/repository/maven-public/") }
     maven { url = uri("https://repo.papermc.io/repository/maven-public/") }
@@ -17,7 +18,7 @@ repositories {
     maven { url = uri("https://jitpack.io") }
 }
 
-version = "1.0.0-BETA"
+version = "1.0.0"
 group = "com.eternalcode"
 
 java {
@@ -40,8 +41,7 @@ dependencies {
 
     // LiteCommands
     implementation("dev.rollczi.litecommands:bukkit:2.8.9")
-    implementation("dev.rollczi.litecommands:core:2.8.9")
-
+    
     // panda-dzikoysk crafted libs
     implementation("org.panda-lang:expressible:1.3.6")
     implementation("org.panda-lang:panda-utilities:0.5.3-alpha")
@@ -64,12 +64,18 @@ dependencies {
     // vault
     compileOnly("com.github.MilkBowl:VaultAPI:1.7.1")
 
+    testImplementation("org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.10.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.0")
+    testImplementation("org.mockito:mockito-core:5.5.0")
+    testImplementation("net.kyori:adventure-platform-bukkit:4.3.0")
+    testImplementation("net.kyori:adventure-platform-facet:4.3.0")
+    testImplementation("net.kyori:adventure-text-minimessage:4.14.0")
 }
 
 bukkit {
-    main = "com.eternalcode.plots.EternalPlots"
+    main = "com.eternalcode.plots.PlotsPlugin"
     apiVersion = "1.17"
     website = "https://eternalcode.pl"
     prefix = "EternalPlots"
@@ -93,41 +99,43 @@ bukkit {
     )
 }
 
-
-
 tasks {
     runServer {
-        minecraftVersion("1.18.2")
+        minecraftVersion("1.20.1")
     }
 
-    withType<JavaCompile> {
+    compileJava {
+        options.compilerArgs = listOf("-Xlint:deprecation", "-parameters")
         options.encoding = "UTF-8"
     }
 
     withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
         archiveFileName.set("EternalPlots v${project.version}.jar")
 
-        exclude("org/intellij/lang/annotations/**","org/jetbrains/annotations/**","org/checkerframework/**","META-INF/**","javax/**")
+        exclude(
+                "META-INF/**",
+                "org/intellij/lang/annotations/**",
+                "org/jetbrains/annotations/**",
+        )
 
         val prefix = "com.eternalcode.plots.libs"
         listOf(
-                "net.dzikoysk",
-                "dev.rollczi",
-                "org.bstats",
-                "org.panda_lang",
-                "panda",
-                "io.papermc.lib",
-                "eu.okaeri",
-                "org.checkerframework",
-                "org.yaml",
-                "com.github",
-                "net.wesjd",
-                "org.bstats",
-                "dev.triumphteam.gui",
-                "com.google.gson"
-        ).forEach { pack ->
-            relocate(pack, "$prefix.$pack")
-        }
+            "net.dzikoysk",
+            "dev.rollczi",
+            "org.bstats",
+            "org.panda_lang",
+            "panda",
+            "io.papermc.lib",
+            "eu.okaeri",
+            "org.checkerframework",
+            "org.yaml",
+            "com.github",
+            "net.wesjd",
+            "org.bstats",
+            "dev.triumphteam.gui",
+            "com.google.gson",
+        ).forEach { relocate(it, prefix) }
+
     }
 
     getByName<Test>("test") {

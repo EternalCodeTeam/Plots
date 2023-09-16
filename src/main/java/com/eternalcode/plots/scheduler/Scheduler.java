@@ -1,17 +1,26 @@
 package com.eternalcode.plots.scheduler;
 
+import panda.std.reactive.Completable;
+
+import java.time.Duration;
+import java.util.function.Supplier;
+
 public interface Scheduler {
 
-    void runTask(Runnable task);
+    Task sync(Runnable task);
 
-    void runTaskAsynchronously(Runnable task);
+    Task async(Runnable task);
 
-    void runTaskLater(Runnable task, long after);
+    Task laterSync(Runnable task, Duration delay);
 
-    void runTaskLaterAsynchronously(Runnable task, long after);
+    Task laterAsync(Runnable task, Duration delay);
 
-    void runTaskTimer(Runnable task, long delay, long period);
+    Task timerSync(Runnable task, Duration delay, Duration period);
 
-    void runTaskTimerAsynchronously(Runnable task, long delay, long period);
+    Task timerAsync(Runnable task, Duration delay, Duration period);
+
+    <T> Completable<T> completeSync(Supplier<T> task);
+
+    <T> Completable<T> completeAsync(Supplier<T> task);
 
 }

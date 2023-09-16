@@ -1,6 +1,5 @@
 package com.eternalcode.plots.user;
 
-import java.util.Objects;
 import java.util.UUID;
 
 public class User {
@@ -8,33 +7,20 @@ public class User {
     private final UUID uuid;
     private String name;
 
-    public User(UUID uuid, String name) {
-        this.name = name;
+    User(UUID uuid) {
         this.uuid = uuid;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return this.uuid.equals(user.uuid);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.uuid);
-    }
-
-    public UUID getUuid() {
+    public UUID uuid() {
         return this.uuid;
     }
 
-    public String getName() {
+    public String name() {
         return this.name;
     }
 
-    public void setName(String name) {
+    void updateName(String name) {
         this.name = name;
     }
+
 }
