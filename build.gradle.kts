@@ -50,7 +50,7 @@ dependencies {
     implementation("dev.triumphteam:triumph-gui:3.1.5")
 
     // okaeri configs
-    implementation("eu.okaeri:okaeri-configs-yaml-snakeyaml:4.0.9")
+    implementation("eu.okaeri:okaeri-configs-yaml-snakeyaml:5.0.1")
 
     // ormlite jdbc
     compileOnly("com.j256.ormlite:ormlite-jdbc:6.1")
