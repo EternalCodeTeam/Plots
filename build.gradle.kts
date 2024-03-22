@@ -2,7 +2,7 @@ plugins {
     id("java-library")
     id("net.minecrell.plugin-yml.bukkit") version "0.6.0"
     id("com.github.johnrengelman.shadow") version "8.1.1"
-    id("xyz.jpenilla.run-paper") version "2.1.0"
+    id("xyz.jpenilla.run-paper") version "2.2.3"
 }
 
 repositories {
@@ -35,8 +35,8 @@ dependencies {
     implementation("net.wesjd:anvilgui:1.9.0-SNAPSHOT")
 
     // adventure
-    compileOnly("net.kyori:adventure-platform-bukkit:4.3.0")
-    compileOnly("net.kyori:adventure-text-minimessage:4.14.0")
+    compileOnly("net.kyori:adventure-platform-bukkit:4.3.2")
+    compileOnly("net.kyori:adventure-text-minimessage:4.16.0")
 
     // LiteCommands
     implementation("dev.rollczi.litecommands:bukkit:2.8.9")
@@ -47,7 +47,7 @@ dependencies {
     implementation("org.panda-lang:panda-utilities:0.5.3-alpha")
 
     // TriumphGui
-    implementation("dev.triumphteam:triumph-gui:3.1.5")
+    implementation("dev.triumphteam:triumph-gui:3.1.7")
 
     // okaeri configs
     implementation("eu.okaeri:okaeri-configs-yaml-snakeyaml:4.0.9")
@@ -56,7 +56,7 @@ dependencies {
     compileOnly("com.j256.ormlite:ormlite-jdbc:6.1")
 
     // hikari
-    compileOnly("com.zaxxer:HikariCP:5.0.1")
+    compileOnly("com.zaxxer:HikariCP:5.1.0")
 
     // bStats
     implementation("org.bstats:bstats-bukkit:3.0.2")
@@ -64,8 +64,8 @@ dependencies {
     // vault
     compileOnly("com.github.MilkBowl:VaultAPI:1.7.1")
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.2")
 }
 
 bukkit {
@@ -79,13 +79,13 @@ bukkit {
     version = "${project.version}"
 
     libraries = listOf(
-        "org.postgresql:postgresql:42.6.0",
-        "com.h2database:h2:2.2.222",
+        "org.postgresql:postgresql:42.7.3",
+        "com.h2database:h2:2.2.224",
         "com.j256.ormlite:ormlite-jdbc:6.1",
-        "com.zaxxer:HikariCP:5.0.1",
-        "net.kyori:adventure-platform-bukkit:4.3.0",
-        "net.kyori:adventure-text-minimessage:4.14.0",
-        "org.mariadb.jdbc:mariadb-java-client:3.2.0"
+        "com.zaxxer:HikariCP:5.1.0",
+        "net.kyori:adventure-platform-bukkit:4.3.2",
+        "net.kyori:adventure-text-minimessage:4.16.0",
+        "org.mariadb.jdbc:mariadb-java-client:3.3.3"
     )
 
     depend = listOf(
